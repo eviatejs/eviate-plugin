@@ -1,0 +1,43 @@
+{
+  "name": "@eviate/plugin",
+  "version": "0.1.0",
+  "description": "Plugin system for EviateJS",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts",
+    "dev": "bun run examples/main.ts",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write ./**/*.{ts,json,md}",
+    "test": "bun wiptest",
+    "prepublishOnly": "yarn build"
+  },
+  "dependencies": {
+    "sweet-event-emitter": "^0.1.0"
+  },
+  "devDependencies": {
+    "eviate": "^0.1.0"
+  },
+  "keywords": [],
+  "author": "EviateJS team",
+  "license": "MIT",
+  "homepage": "https://github.com/eviatejs/eviate-plugin",
+  "bugs": {
+    "url": "https://github.com/eviatejs/eviate-plugin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eviatejs/eviate-plugin.git"
+  }
+}

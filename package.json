@@ -1,0 +1,29 @@
+{
+  "name": "eviate-plugin",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "typecheck": "turbo run typecheck --parallel",
+    "test": "turbo run test --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"./**/*.{ts,tsx,json,md}\"",
+    "changeset:release": "yarn build && changeset publish",
+    "changeset:version": "changeset version && yarn",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.24.4",
+    "bun-types": "^0.1.11",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "tsup": "^6.2.3",
+    "turbo": "latest",
+    "typescript": "^4.8.3"
+  }
+}

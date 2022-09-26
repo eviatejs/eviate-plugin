@@ -1,0 +1,36 @@
+# Editor files
+.idea/
+.vscode/
+
+# dependencies
+node_modules/
+.pnp/
+.pnp.*
+.yarn/
+
+# Build files
+dist/
+
+# testing
+coverage/
+
+# Misc files.
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environmental variables
+.env
+.env.local
+.env.development
+
+# Coverage
+coverage/
+coverage.json
+
+# Turbo
+.turbo
