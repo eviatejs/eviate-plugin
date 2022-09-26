@@ -1,3 +1,3 @@
-# Saturn utilities
+# Eviate plugins
 
-Collection of utilities to simplify tiny tasks while building dApps.
+The core plugin API and first-party handcrafted plugins for Eviate.

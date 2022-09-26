@@ -1,7 +1,7 @@
 {
-  "name": "@eviatejs/plugin",
+  "name": "@eviatejs/plugin-filesystem-router",
   "version": "0.1.0",
-  "description": "Plugin system for EviateJS",
+  "description": "Filesystem router plugin for EviateJS",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -27,7 +27,7 @@
     "prepublishOnly": "bun run build"
   },
   "dependencies": {
-    "sweet-event-emitter": "^0.1.0"
+    "@eviatejs/plugin": "^0.1.0"
   },
   "devDependencies": {
     "eviate": "^0.1.0"
