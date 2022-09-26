@@ -10,9 +10,9 @@
     "typecheck": "turbo run typecheck --parallel",
     "test": "turbo run test --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"./**/*.{ts,tsx,json,md}\"",
-    "changeset:release": "yarn build && changeset publish",
-    "changeset:version": "changeset version && yarn",
+    "format": "prettier --write ./packages/**/*.{ts,json,md}",
+    "changeset:release": "bun run build && changeset publish",
+    "changeset:version": "changeset version && bun",
     "prepare": "husky install"
   },
   "devDependencies": {
