@@ -92,7 +92,7 @@ export class FileSystemRouter extends Plugin {
     });
   }
 
-  public handler(app: any): void {
+  public handler(app: Engine): void {
     this.logRoutes(app);
     this.middlewares(app);
   }
