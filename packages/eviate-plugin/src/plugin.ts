@@ -2,14 +2,13 @@ import { EventEmitter } from 'sweet-event-emitter';
 
 import { defaultAppMetadataValue } from './schema/AppMetadata';
 
-import type { Engine } from 'eviate';
 import type { AppMetadata } from './schema/AppMetadata';
 import type { PluginSettings } from './interfaces/plugin-settings';
-import type { RouteVal, MiddlewareVal, ReturnVal } from './interfaces';
+import type { RouteValue, MiddlewareValue, ReturnValue } from './interfaces';
 export abstract class Plugin {
   public readonly event: EventEmitter;
-  abstract routes: RouteVal[];
-  abstract middleware: MiddlewareVal[];
+  abstract routes: RouteValue[];
+  abstract middleware: MiddlewareValue[];
   private _metadata: AppMetadata;
 
   constructor(metadata: AppMetadata) {
@@ -21,7 +20,7 @@ export abstract class Plugin {
     return this._metadata;
   }
 
-  public abstract handler(): ReturnVal;
+  public abstract handler(): ReturnValue;
 
   abstract get settings(): PluginSettings;
 }

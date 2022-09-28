@@ -1,17 +1,17 @@
 import type { handler, MiddlewareHandler } from 'eviate';
 
-export interface RouteVal {
+export interface RouteValue {
   path: string;
   method: string;
   handler: handler;
 }
 
-export interface MiddlewareVal {
+export interface MiddlewareValue {
   position: string;
   handler: MiddlewareHandler;
 }
 
-export interface ReturnVal {
-  routes: RouteVal[];
-  middlewares: MiddlewareVal[];
+export interface ReturnValue {
+  routes: RouteValue[];
+  middlewares: MiddlewareValue[];
 }
