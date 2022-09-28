@@ -1,99 +1,99 @@
-import { readdirSync, lstatSync } from 'fs';
-import path from 'path';
+// import { readdirSync, lstatSync } from 'fs';
+// import path from 'path';
 
-import { Plugin } from '@eviatejs/plugin';
+// import { Plugin } from '@eviatejs/plugin';
 
-import type { Engine } from 'eviate';
-import type { FileSystemMiddlewareInterface } from './interfaces/file-system-router';
+// import type { FileSystemMiddlewareInterface } from './interfaces/file-system-router';
 
-export class FileSystemRouter extends Plugin {
-  private options: FileSystemMiddlewareInterface;
+// export class FileSystemRouter extends Plugin {
+//   private options: FileSystemMiddlewareInterface;
 
-  constructor(options: FileSystemMiddlewareInterface) {
-    super({
-      title: 'File System Router',
-      description:
-        'A plugin that allows you to use the file system to auto load routes and middlewares',
-      version: '1.0.0'
-    });
+//   constructor(options: FileSystemMiddlewareInterface) {
+//     super({
+//       title: 'File System Router',
+//       description:
+//         'A plugin that allows you to use the file system to auto load routes and middlewares',
+//       version: '1.0.0'
+//     });
 
-    this.options = options;
-  }
+//     this.options = options;
+//   }
 
-  public get settings() {
-    return {};
-  }
+//   public get settings() {
+//     return {};
+//   }
 
-  public middlewares(app: Engine): void {
-    const middlewarePath: string = path.join(
-      process.cwd(),
-      this.options.middlewareDir
-    );
+//   public middlewares(): void {
+//     const middlewarePath: string = path.join(
+//       process.cwd(),
+//       this.options.middlewareDir
+//     );
 
-    readdirSync(middlewarePath).forEach(async (file: string) => {
-      const middleware = await import(`${middlewarePath}/${file}`);
+//     readdirSync(middlewarePath).forEach(async (file: string) => {
+//       const middleware = await import(`${middlewarePath}/${file}`);
 
-      app.use(middleware.middleware.position, middleware.middleware.run);
-    });
-  }
+//       this.
+//     });
+//   }
 
-  private async logFile(file: string, path: string, app: any) {
-    if (file.endsWith('.js') || file.endsWith('.ts')) {
-      const code = await import(`${path}/${file}`);
+//   private async logFile(file: string, path: string) {
+//     if (file.endsWith('.js') || file.endsWith('.ts')) {
+//       const code = await import(`${path}/${file}`);
 
-      if (!code.route) throw new Error('Sunrit implement');
+//       if (!code.route) throw new Error('Sunrit implement');
 
-      const regex = /\[(\w+)\]/;
-      const result = file.match(regex);
+//       const regex = /\[(\w+)\]/;
+//       const result = file.match(regex);
 
-      if (result) file = ':' + result[1];
+//       if (result) file = ':' + result[1];
 
-      const rmPath = path
-        .replace(process.cwd(), '')
-        .replace(this.options.routerDir, '');
-      let routePath: string = '';
+//       const rmPath = path
+//         .replace(process.cwd(), '')
+//         .replace(this.options.routerDir, '');
+//       let routePath: string = '';
 
-      if (file.endsWith('.ts'))
-        routePath = rmPath + '/' + file.replace('.ts', '');
-      if (file.endsWith('.js'))
-        routePath = rmPath + '/' + file.replace('.js', '');
+//       if (file.endsWith('.ts'))
+//         routePath = rmPath + '/' + file.replace('.ts', '');
+//       if (file.endsWith('.js'))
+//         routePath = rmPath + '/' + file.replace('.js', '');
 
-      app.register(code.route.method, routePath, code.route.run);
-    }
-  }
+//       app.register(code.route.method, routePath, code.route.run);
+//     }
+//   }
 
-  private logDirectory(file: string, app: any) {
-    readdirSync(file).forEach(async (dir: string) => {
-      const dirFile = await lstatSync(`${file}/${dir}`);
+//   private logDirectory(file: string) {
+//     readdirSync(file).forEach(async (dir: string) => {
+//       const dirFile = await lstatSync(`${file}/${dir}`);
 
-      if (dirFile.isDirectory()) {
-        this.logDirectory(`${file}/${dir}`, app);
-      }
+//       if (dirFile.isDirectory()) {
+//         this.logDirectory(`${file}/${dir}`, app);
+//       }
 
-      if (dirFile.isFile()) {
-        await this.logFile(dir, file, app);
-      }
-    });
-  }
+//       if (dirFile.isFile()) {
+//         await this.logFile(dir, file, app);
+//       }
+//     });
+//   }
 
-  public logRoutes(app: any) {
-    const routePath: string = path.join(process.cwd(), this.options.routerDir);
+//   public logRoutes() {
+//     const routePath: string = path.join(process.cwd(), this.options.routerDir);
 
-    readdirSync(routePath).forEach(async (dir: string) => {
-      const file = await lstatSync(`${routePath}/${dir}`);
+//     readdirSync(routePath).forEach(async (dir: string) => {
+//       const file = await lstatSync(`${routePath}/${dir}`);
 
-      if (file.isDirectory()) {
-        this.logDirectory(`${routePath}/${dir}`, app);
-      }
+//       if (file.isDirectory()) {
+//         this.logDirectory(`${routePath}/${dir}`, app);
+//       }
 
-      if (file.isFile()) {
-        await this.logFile(dir, routePath, app);
-      }
-    });
-  }
+//       if (file.isFile()) {
+//         await this.logFile(dir, routePath, app);
+//       }
+//     });
+//   }
 
-  public handler(app: Engine): void {
-    this.logRoutes(app);
-    this.middlewares(app);
-  }
-}
+//   public handler(): void {
+
+//   }
+// }
+
+export {};

@@ -27,7 +27,7 @@
     "prepublishOnly": "bun run build"
   },
   "dependencies": {
-    "@eviatejs/plugin": "^0.1.0"
+    "@eviatejs/plugin": "^0.1.1"
   },
   "devDependencies": {
     "eviate": "^0.1.0"
